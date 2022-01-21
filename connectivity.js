@@ -6,6 +6,11 @@ const multer = require('multer');
 var path = require('path');
 const { strictEqual } = require('assert');
 
+const server = app.listen(process.env.PORT || 5000, () => {
+    const port = server.address().port;
+    console.log(`Express is working on port ${port}`);
+  });
+
 
 app.set("view engine", "ejs");
 
