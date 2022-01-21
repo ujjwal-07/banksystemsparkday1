@@ -1,0 +1,11 @@
+wallpaper.ejs page:
+-make it more attractive
+-add Quality features like HD,4k,8k
+
+wallpaperMobile.ejs page:
+- make it more attractive
+-add Quality features like HD,4k,8k
+
+
+
+website to get non-copyrighted images from : "https://unsplash.com/images/stock/non-copyrighted"
