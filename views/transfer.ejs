@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<title>Customer Data</title>
+</head>
+<style>
+    .container{
+        left: 200px;
+        right: 0px;
+        top: 0px;
+        bottom: -400px;
+        position: absolute;
+        margin: auto;
+        height: 550px;
+        width: 550px;
+    }
+    body{
+        background-image: url('https://cdn.wallpapersafari.com/21/8/M7fdoJ.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+    }
+</style>
+<body>
+    <header>
+      <a href="http://127.0.0.1:5500/practice.html" style="color: black;"><input type="button" class="btn btn-dark" value="Home"></a>
+
+    </header>
+    <br><br><br>
+             
+    <div class="container">
+        <form action="" method="post">
+          <div class="form-group">
+           
+          <label for="balance">Tranfer from :</label>
+        <input id="from" type="text" list="brow" class="form-control" >
+
+        <datalist id="brow">
+               
+            <%
+                for ( let singleItem of dataList ) {
+            %>
+                <option value='<%= singleItem.email %>'>
+            <%
+                }
+            %>
+          </datalist>
+          <label for="balance">Transfer to:</label>
+          <input id="to" list="browsers" class="form-control">
+
+          <datalist id="browsers">
+               
+                  <%
+                      for ( let singleItem of dataList ) {
+                  %>
+                      <option value='<%= singleItem.email %>'>
+                  <%
+                      }
+                  %>
+                </datalist>
+            </input>
+
+            <label for="amt">Enter Amount:</label>
+            <input id="amt" type="text"  class="form-control" >
+
+            <br><br>
+        <a href="" id="A">  <button type="button" class="btn btn-default" onclick="validation()">Submit</button></a>
+        </form>
+      </div>
+      <%dataList.forEach(data =>{%>
+
+  
+         
+                    </div>
+      
+
+                
+
+    </div>
+    <script src="../connectivity.js"></script>
+    <script>
+        function validation(){
+            let to = document.getElementById("to").value;
+            let from = document.getElementById("from").value;
+            let amt = document.getElementById("amt").value;
+            amt = parseInt(amt);
+            let dec = Number.isInteger(amt)
+            
+            if(to == from ){
+                alert("Invalid Transaction: You cannot transfer to Yourself")
+            }
+            else if(dec != true){
+                alert("Invalid Input")
+
+            }
+
+            
+            else{
+                document.getElementsByTagName("button").type = "submit";
+                document.getElementById("A").href = `http://localhost:8080/update/${to}/${from}/${amt}`
+            }
+
+        }
+    </script>
+    <%})%>
+</body>
+</html>
